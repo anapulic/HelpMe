@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <LinearLayout
+        tools:context="com.example.ana.helpme.SignUpActivity"
+        android:orientation="vertical" android:layout_height="match_parent"
+        android:layout_width="match_parent" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="129dp"
+            android:layout_height="129dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/logo" />
+
+</RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_centerVertical="true"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="REGISTRACIJA"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorAccent" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textColorHint="@color/colorAccent"
+        android:paddingBottom="15dp"
+        android:inputType="textEmailAddress"
+        android:hint="email"
+        android:fontFamily="sans-serif"
+        android:id="@+id/editTextEmail"/>
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textColorHint="@color/colorAccent"
+        android:paddingBottom="15dp"
+        android:inputType="textPassword"
+        android:hint="password"
+        android:fontFamily="sans-serif"
+        android:id="@+id/editTextPassword"/>
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@drawable/rounded_button_transparent"
+        android:id="@+id/buttonSignUp"
+        android:textColor="@color/colorAccent"
+        android:textAllCaps="false"
+        android:text="SignUp"
+        android:layout_margin="7dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/textViewLogin"
+        android:textColor="@color/colorAccent"
+        android:text="Već imate svoj korisnički račun? Prijavite se!"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textAlignment="center"
+        android:padding="15dp"/>
+
+</LinearLayout>
+
+    <ProgressBar
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/progressbar"
+        android:visibility="gone"/>
+
+</RelativeLayout>
+
+</LinearLayout>
