@@ -24,7 +24,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     ProgressBar progressBar;
     EditText editTextEmail, editTextPassword;
 
-    private FirebaseAuth mAuth;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,43 +35,39 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
 
-        mAuth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();  // instanca firebase autentikacije
 
         findViewById(R.id.buttonSignUp).setOnClickListener(this);
         findViewById(R.id.textViewLogin).setOnClickListener(this);
     }
 
+    //Metoda registerUser - registracija korisnika
     private void registerUser() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
-
         if (email.isEmpty()) {
-            editTextEmail.setError("Email is required");
+            editTextEmail.setError("Email je obavezan!");
             editTextEmail.requestFocus();
             return;
         }
-
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editTextEmail.setError("Please enter a valid email");
+            editTextEmail.setError("Unesite ispravan email!");
             editTextEmail.requestFocus();
             return;
         }
-
         if (password.isEmpty()) {
-            editTextPassword.setError("Password is required");
+            editTextPassword.setError("Lozinka je obavezna!");
             editTextPassword.requestFocus();
             return;
         }
-
         if (password.length() < 6) {
-            editTextPassword.setError("Minimum lenght of password should be 6");
+            editTextPassword.setError("Minimalna duljina lozinke je 6 znakova!");
             editTextPassword.requestFocus();
             return;
         }
-
         progressBar.setVisibility(View.VISIBLE);
-
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        // Registracija korisnika kroz firebase
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
@@ -79,28 +75,23 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     finish();
                     startActivity(new Intent(SignUpActivity.this, ProfileActivity.class));
                 } else {
-
                     if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-                        Toast.makeText(getApplicationContext(), "You are already registered", Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(getApplicationContext(), "Već ste registrirani!", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
-
                 }
             }
         });
-
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonSignUp:
+            case R.id.buttonSignUp:  // poziv metode registerUser na klik signup
                 registerUser();
                 break;
-
-            case R.id.textViewLogin:
+            case R.id.textViewLogin: // preusmjeravanje na aktivnost za prijavu na klik login
                 finish();
                 startActivity(new Intent(this, MainActivity.class));
                 break;
