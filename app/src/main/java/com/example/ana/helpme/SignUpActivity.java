@@ -18,13 +18,19 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.StorageReference;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
     ProgressBar progressBar;
-    EditText editTextEmail, editTextPassword;
+    EditText editTextName, editTextSurname, editTextEmail, editTextPassword;
 
     private FirebaseAuth auth;
+    FirebaseAuth.AuthStateListener authlistener;
+
+    DatabaseReference database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +72,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
         progressBar.setVisibility(View.VISIBLE);
+
         // Registracija korisnika kroz firebase
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -73,7 +80,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
                     finish();
-                    startActivity(new Intent(SignUpActivity.this, ProfileActivity.class));
+                    startActivity(new Intent(SignUpActivity.this, UserProfileActivity.class));
                 } else {
                     if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                         Toast.makeText(getApplicationContext(), "Već ste registrirani!", Toast.LENGTH_SHORT).show();
