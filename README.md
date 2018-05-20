@@ -11,3 +11,4 @@
   #19.5.2018.--> User profile added 
              --> Communication with Firebase database established
              --> Google Maps implemented
+  #20.5.2018. --> getDeviceLocation method added
