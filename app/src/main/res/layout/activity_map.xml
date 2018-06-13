@@ -10,11 +10,14 @@
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/map"
-        tools:context=".MapsActivity"
-        android:name="com.google.android.gms.maps.SupportMapFragment" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        tools:context=".MapsActivity" />
 
     <Button
         android:id="@+id/btnHelp"
@@ -22,11 +25,27 @@
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginEnd="17dp"
         android:background="@drawable/help_me"
         android:layout_alignParentRight="true"
         android:layout_marginRight="17dp" />
+
+
+    <TextView
+        android:id="@+id/usersInDanger"
+        android:layout_width="159dp"
+        android:layout_height="121dp"
+        android:layout_alignBottom="@+id/btnHelp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:hint="Korisnici u opasnosti"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorAccent"
+        android:textSize="11dp" />
+
 
 </RelativeLayout>
 

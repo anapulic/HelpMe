@@ -7,4 +7,15 @@
     android:elevation="40dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+
+    <Button
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:id="@+id/btnLogOut"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="11dp"
+        android:layout_marginLeft="250dp"
+        android:background="@drawable/logout"
+        />
 </android.support.v7.widget.Toolbar>
